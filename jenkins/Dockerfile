@@ -23,17 +23,20 @@ USER jenkins
 
 COPY configs/*.xml /var/jenkins_home/
 
+RUN mkdir /var/jenkins_home/jobs
+COPY jobs/*.xml /var/jenkins_home/jobs/
+
 COPY configs/plugins.txt /var/jenkins_home/plugins.txt
 RUN jenkins-plugin-cli -f /var/jenkins_home/plugins.txt
 
 ADD configs/jenkins-cli.jar /var/jenkins_home/
 ADD init.groovy/ /usr/share/jenkins/ref/init.groovy.d/
 
-RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job m4marry-apsfwersgfdgi < /tmp/jobs/job.xml 
-RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job helloaddress-f2sdjjtgfhde < /tmp/jobs/job.xml 
-RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job horizon-ap34634i < /tmp/jobs/job.xml 
-RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job misc-fe2323dfgjt < /tmp/jobs/job.xml 
-RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job test-apiwerr123 < /tmp/jobs/job.xml 
-RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job mobile-fewqerwer < /tmp/jobs/job.xml 
-RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job sso-apdddi < /tmp/jobs/job.xml 
-RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job tablet-fedd < /tmp/jobs/job.xml 
+RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job m4marry-apsfwersgfdgi < /var/jenkins_home/jobs/jobs/job.xml 
+RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job helloaddress-f2sdjjtgfhde < /var/jenkins_home/jobs/jobs/job.xml 
+RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job horizon-ap34634i < /var/jenkins_home/jobs/jobs/job.xml 
+RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job misc-fe2323dfgjt < /var/jenkins_home/jobs/jobs/job.xml 
+RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job test-apiwerr123 < /var/jenkins_home/jobs/jobs/job.xml 
+RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job mobile-fewqerwer < /var/jenkins_home/jobs/jobs/job.xml 
+RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job sso-apdddi < /var/jenkins_home/jobs/jobs/job.xml 
+RUN java -jar /var/jenkins_home/jenkins-cli.jar -auth management:hifxadmin -s http://localhost:8080 create-job tablet-fedd < /var/jenkins_home/jobs/jobs/job.xml 
